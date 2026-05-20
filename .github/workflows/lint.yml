@@ -37,7 +37,10 @@ jobs:
         run: composer lint
 
       - name: Run Rector (structure check)
-        run: vendor/bin/rector process --dry-run --ansi
+        run: composer rector:check
+
+      - name: Run PHPStan
+        run: composer phpstan
 
       - name: Format Frontend
         run: npm run format

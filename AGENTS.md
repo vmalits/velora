@@ -15,6 +15,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - laravel/framework (LARAVEL) - v13
 - laravel/prompts (PROMPTS) - v0
 - laravel/wayfinder (WAYFINDER) - v0
+- larastan/larastan (LARASTAN) - v3
 - laravel/boost (BOOST) - v2
 - laravel/mcp (MCP) - v0
 - laravel/pail (PAIL) - v1
@@ -48,8 +49,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Stick to existing directory structure; don't create new base folders without approval.
 - Do not change the application's dependencies without approval.
-- Keep web routes split by domain: `routes/web.php` contains top-level pages and includes `routes/settings.php` for settings/account flows.
-- Keep settings backend code in `app/Http/Controllers/Settings` and `app/Http/Requests/Settings` (for example, `ProfileController` + `ProfileUpdateRequest`).
 
 ## Frontend Bundling
 
@@ -94,7 +93,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Run Artisan commands directly via the command line (e.g., `php artisan route:list`). Use `php artisan list` to discover available commands and `php artisan [command] --help` to check parameters.
 - Inspect routes with `php artisan route:list`. Filter with: `--method=GET`, `--name=users`, `--path=api`, `--except-vendor`, `--only-vendor`.
 - Read configuration values using dot notation: `php artisan config:show app.name`, `php artisan config:show database.default`. Or read config files directly from the `config/` directory.
-- For local full-stack work, prefer `composer run dev` (starts `php artisan serve`, `php artisan queue:listen`, `php artisan pail`, and `npm run dev` concurrently).
 
 ## Tinker
 
@@ -112,7 +110,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Use TitleCase for Enum keys: `FavoritePerson`, `BestLake`, `Monthly`.
 - Prefer PHPDoc blocks over inline comments. Only add inline comments for exceptionally complex logic.
 - Use array shape type definitions in PHPDoc blocks.
-- Follow the project default of `declare(strict_types=1);` in PHP files.
 
 === deployments rules ===
 
@@ -126,7 +123,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
-- Feature tests use `RefreshDatabase` globally via `tests/Pest.php`; place HTTP/integration coverage in `tests/Feature` to inherit that behavior.
 
 === inertia-laravel/core rules ===
 
@@ -186,9 +182,6 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 # Laravel Wayfinder
 
 Use Wayfinder to generate TypeScript functions for Laravel routes. Import from `@/actions/` (controllers) or `@/routes/` (named routes).
-
-- Treat `resources/js/routes/**` and `resources/js/actions/**` as generated Wayfinder output; regenerate instead of hand-editing when routes/controllers change.
-- This project enables Wayfinder `formVariants` in `vite.config.ts`; prefer `.form()` helpers with Inertia `<Form>` components (example: `SecurityController.update.form()` in `resources/js/pages/settings/security.tsx`).
 
 === pint/core rules ===
 
