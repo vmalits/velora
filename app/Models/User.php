@@ -30,6 +30,7 @@ class User extends Authenticatable implements PasskeyUser
      *
      * @return array<string, string>
      */
+    #[\Override]
     protected function casts(): array
     {
         return [
