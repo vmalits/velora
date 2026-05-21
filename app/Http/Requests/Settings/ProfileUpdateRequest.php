@@ -20,11 +20,8 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        /** @var User $user */
         $user = $this->user();
-
-        if (! $user instanceof User) {
-            abort(403);
-        }
 
         return $this->profileRules($user->id);
     }
