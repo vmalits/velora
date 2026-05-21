@@ -62,7 +62,9 @@ jobs:
         run: cp .env.testing .env
 
       - name: Generate Application Key
-        run: php artisan key:generate --force
+        run: |
+          php artisan key:generate --force
+          cp .env .env.testing
 
       - name: Build Assets
         run: npm run build
