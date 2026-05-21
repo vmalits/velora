@@ -21,6 +21,21 @@ jobs:
       matrix:
         php-version: ['8.5']
 
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: testing
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d testing"
+          --health-interval=5s
+          --health-timeout=3s
+          --health-retries=5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
