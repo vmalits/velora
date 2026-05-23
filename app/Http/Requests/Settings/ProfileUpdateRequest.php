@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\Settings;
 
 use App\Concerns\ProfileValidationRules;
-use App\Models\User;
+use App\Domain\Identity\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
