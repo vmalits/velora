@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Actions\Fortify;
+namespace App\Domain\Identity\Actions;
 
 use App\Concerns\PasswordValidationRules;
 use App\Concerns\ProfileValidationRules;
@@ -15,11 +15,6 @@ class CreateNewUser implements CreatesNewUsers
     use PasswordValidationRules;
     use ProfileValidationRules;
 
-    /**
-     * Validate and create a newly registered user.
-     *
-     * @param array<string, string> $input
-     */
     public function create(array $input): User
     {
         Validator::make($input, [
